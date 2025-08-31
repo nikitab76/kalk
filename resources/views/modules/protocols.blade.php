@@ -94,11 +94,35 @@
                 $(".copy-btn").on("click", function () {
                     let link = $(this).data("link");
 
-                    navigator.clipboard.writeText(link).then(() => {
-                        alert("Ссылка скопирована: " + link);
-                    });
+                    if (navigator.clipboard && window.isSecureContext) {
+                        // Современный способ (https или localhost)
+                        navigator.clipboard.writeText(link).then(() => {
+                            alert("Ссылка скопирована: " + link);
+                        }).catch(err => {
+                            console.error("Ошибка копирования:", err);
+                        });
+                    } else {
+                        // Fallback для http
+                        let textarea = document.createElement("textarea");
+                        textarea.value = link;
+                        textarea.style.position = "fixed";  // чтобы не скакала страница
+                        textarea.style.opacity = 0;         // невидимая
+                        document.body.appendChild(textarea);
+                        textarea.focus();
+                        textarea.select();
+
+                        try {
+                            document.execCommand("copy");
+                            alert("Ссылка скопирована (fallback): " + link);
+                        } catch (err) {
+                            console.error("Ошибка копирования (fallback):", err);
+                        }
+
+                        document.body.removeChild(textarea);
+                    }
                 });
             });
+
         </script>
     </section>
 @endsection
