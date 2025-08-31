@@ -54,9 +54,11 @@
             </div>
         </div>
         <div class="content">
-            <div class="text-center" id="noProtokol">
-                <h1>Протоколов еще нет</h1>
-            </div>
+            @if(\App\Models\ProtokolName::query()->count() == 0)
+                <div class="text-center" id="noProtokol">
+                    <h1>Протоколов еще нет</h1>
+                </div>
+            @endif
             <div class="content" id="table">
                 <table class="table table-hover">
                     <thead>
