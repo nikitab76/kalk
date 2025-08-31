@@ -64,6 +64,7 @@ class ProtocolController extends Controller
                 ]
             );
         }
+        return view('modules.protocols');
     }
 
     public function protokolList($protocol_id)
