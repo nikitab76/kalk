@@ -98,6 +98,7 @@ class ProtocolController extends Controller
         $data = [];
         foreach ($protokol as $user) {
             $row['user'] = $user->user;
+            $row['district'] = $user->district;
             foreach (json_decode($user->normative, true) as $key => $normativ) {
                 $row[$key] = $normativ;
             }

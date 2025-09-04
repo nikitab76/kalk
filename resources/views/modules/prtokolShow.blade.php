@@ -39,6 +39,11 @@
 
                     // первая колонка "Участник"
                     columns.push({
+                        title: 'Район',
+                        data: 'district',
+                        className: "cursor penalty column-100 text-align-center vertical-align-middle",
+                    });
+                    columns.push({
                         title: 'Участник',
                         data: 'user',
                         className: "cursor penalty column-100 text-align-center vertical-align-middle",
@@ -48,7 +53,7 @@
                     let keys = new Set();
                     data.forEach(row => {
                         Object.keys(row).forEach(key => {
-                            if (key !== 'user') {
+                            if (key !== 'user' && key !=='district') {
                                 keys.add(key);
                             }
                         });
