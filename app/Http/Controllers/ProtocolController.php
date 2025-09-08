@@ -106,4 +106,11 @@ class ProtocolController extends Controller
         }
         return view('modules.prtokolShow', compact(['protocol_id', 'data']));
     }
+
+    public function deleteProtokol($protocol_id)
+    {
+        ProtokolName::query()->where('name_id', $protocol_id)->delete();
+        UserResultProtokol::query()->where('name_protokol', $protocol_id)->delete();
+        return view('modules.protocols');
+    }
 }

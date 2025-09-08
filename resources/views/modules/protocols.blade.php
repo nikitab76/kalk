@@ -69,6 +69,7 @@
                         <th scope="col">Дата</th>
                         <th scope="col">Дата создания</th>
                         <th scope="col">Ссылка</th>
+                        <th scope="col">Действия</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -84,6 +85,14 @@
                                 <i class="fa fa-link copy-btn"
                                    data-link="{{ route('protokol.list', ['protocol_id' => $protokol['name_id']]) }}"
                                    style="cursor: pointer;"></i>
+                            </td>
+                            <td>
+                                <!-- иконка для копирования -->
+                                <a href="{{route('delete.protokol', ['protocol_id' => $protokol['name_id']])}}">
+                                    <i class="fa fa-trash"
+                                      style="cursor: pointer;"></i>
+                                </a>
+
                             </td>
                         </tr>
                     @endforeach

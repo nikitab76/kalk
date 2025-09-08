@@ -16,14 +16,14 @@ return new class extends Migration
                 $table->id();
                 $table->string('name')->nullable()->unique();
                 $table->string('name_id')->nullable()->unique();
-                $table->string('date')->nullable()->unique();
+                $table->string('date')->nullable();
                 $table->timestamps();
             });
         }
 
         Schema::table('protokol_names', function (Blueprint $table) {
             if (!Schema::hasColumn('protokol_names', 'date')) {
-                $table->string('date')->nullable()->after('name_id')->unique();
+                $table->string('date')->nullable()->after('name_id');
             }
         });
     }

@@ -24,3 +24,4 @@ Route::post('/result/user', [\App\Http\Controllers\ProtocolController::class, 'e
 Route::post('/create-protocol', [\App\Http\Controllers\ProtocolController::class, 'createProtocol'])->name('createProtocol');
 Route::get('/protocol/resul/{protocol_id}', [\App\Http\Controllers\ProtocolController::class, 'showResult'])
     ->name('show.protocol');
+Route::get('/deleteProtokol/{protocol_id}', [\App\Http\Controllers\ProtocolController::class, 'deleteProtokol'])->name('delete.protokol');
