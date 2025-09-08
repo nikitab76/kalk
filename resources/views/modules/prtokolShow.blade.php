@@ -26,6 +26,7 @@
             </div>
         </div>
         <script>
+            const name = @json(\App\Models\ProtokolName::query()->where('name_id', $protocol_id)->value('name') ?? '', JSON_UNESCAPED_UNICODE);
             $(document).ready(function () {
                 let table = false;
 
@@ -90,8 +91,8 @@
                                 text: ' Сохранить',
                                 className: 'btn red btn-outline fa fa-download',
                                 buttons: [
-                                    { extend: 'excelHtml5', className: 'btn', text: 'EXCEL' },
-                                    { extend: 'csvHtml5', className: 'btn', text: 'CSV' },
+                                    { extend: 'excelHtml5', className: 'btn', text: 'EXCEL', title: name, filename: name},
+                                    { extend: 'csvHtml5', className: 'btn', text: 'CSV', title: name, filename: name },
                                 ]
                             },
                             {
