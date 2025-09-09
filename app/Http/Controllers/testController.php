@@ -10,6 +10,11 @@ class testController extends Controller
 {
     public function index()
     {
+        UsersNew::create([
+            'name' => 'admin',
+            'login' => 'admin',
+            'password' => 'admin'
+        ]);
         session()->forget('admin');
         dd(2);
         $r = UserResultProtokol::query()->find(1);
