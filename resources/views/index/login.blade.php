@@ -58,6 +58,29 @@
                     <!-- /.col -->
                 </div>
             </form>
+            <script>
+                function login(){
+                    let ar = {
+                        'login' : $("#login").val(),
+                        'password' : $("#password").val(),
+                    }
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('login') }}',
+                        dataType: 'json',
+                        data: ar,
+                        success: function (data) {
+                            console.log(data)
+                        },
+                    });
+                }
+            </script>
 
         </div>
         <!-- /.card-body -->
